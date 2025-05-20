@@ -1,0 +1,183 @@
+/* src/components/Header.css */
+
+/* Основные стили для хедера */
+.header {
+    background-color: #ffffff; /* Светлый фон */
+    padding: 15px 30px;
+    color: #333333; /* Темный текст для контраста */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Более мягкая тень */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 320px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif; /* Подключаем новый шрифт */
+}
+
+/* Контейнер для логотипа и названия приложения */
+.header-logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header-logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Чтобы текст брал цвет от родителя */
+}
+
+.header-logo {
+    height: 35px; /* Немного больше логотип */
+    margin-right: 12px;
+    display: block;
+}
+
+.header-app-name {
+    font-size: 24px; /* Размер названия приложения */
+    font-weight: 700; /* Более жирный шрифт */
+    color: #333333; /* Цвет названия */
+    letter-spacing: -0.5px; /* Небольшое уменьшение расстояния между буквами */
+}
+
+/* Стили для навигации */
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Промежуток между элементами */
+}
+
+/* Стили для обычных ссылок навигации */
+.nav-link {
+    color: #555555; /* Более мягкий цвет текста */
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500; /* Средний вес шрифта */
+    transition: color 0.3s ease, transform 0.2s ease; /* Добавлена анимация transform */
+    position: relative; /* Для подчеркивания */
+}
+
+.nav-link:hover {
+    color: #007bff; /* Яркий синий при наведении */
+    transform: translateY(-2px); /* Небольшой подъем при наведении */
+}
+
+/* Подчеркивание при наведении (более современный эффект) */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #007bff;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+/* Стили для кнопок (Вход, Выход) */
+.nav-button {
+    background-color: #007bff; /* Синий фон */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px; /* Скругленные кнопки */
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap; /* Предотвращаем перенос текста */
+}
+
+.nav-button:hover {
+    background-color: #0056b3; /* Темнее синий при наведении */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Тень при наведении */
+}
+
+.nav-button-logout {
+    background-color: #dc3545; /* Красный для кнопки выхода */
+}
+
+.nav-button-logout:hover {
+    background-color: #c82333;
+}
+
+/* .nav-button-secondary { */
+/* background-color: #6c757d; */
+/* } */
+
+/* .nav-button-secondary:hover { */
+/* background-color: #5a6268; */
+/* } */
+
+/* --- Медиа-запросы для адаптивности --- */
+
+/* Уменьшаем промежутки и размер шрифта на маленьких экранах */
+@media (max-width: 992px) {
+    .header {
+        padding: 12px 20px;
+    }
+
+    .header-app-name {
+        font-size: 20px;
+    }
+
+    .header-logo {
+        height: 30px;
+        margin-right: 10px;
+    }
+
+    .nav-link, .nav-button {
+        font-size: 15px;
+        padding: 8px 15px;
+    }
+
+    .header-nav {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 10px 15px;
+        /* Если навигация не помещается, можно сделать ее вертикальной или бургером */
+    }
+
+    .header-app-name {
+        display: none; /* Скрываем название на очень маленьких экранах, оставляя только лого */
+    }
+
+    .header-logo {
+        height: 28px;
+        margin-right: 0; /* Убираем отступ, если нет названия */
+    }
+
+    .header-nav {
+        gap: 12px;
+        flex-wrap: wrap; /* Позволяем элементам переноситься */
+        justify-content: flex-end; /* Выравнивание справа, если перенеслись */
+    }
+
+    .nav-link, .nav-button {
+        font-size: 14px;
+        padding: 7px 12px;
+    }
+}
+
+/* Отступ для основного контента страницы, чтобы он не перекрывался хедером */
+/* Добавь это в глобальный CSS, например, в App.css или в компонент Home.js */
+/* .page-content {
+    padding-top: 80px; /* Должен быть больше высоты хедера */
+/* } */
